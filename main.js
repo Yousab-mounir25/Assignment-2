@@ -80,9 +80,6 @@
 // deleteFile('test.txt')
 // // //------------------------------------------------------------------------------------------------------------------
 // //(11)
-// // Write a function that creates a folder synchronously. (0.5 Grade)
-// // •
-// // Output Example: “Success”
 // function creatFolderSync(folderPath){
 //     try {
 //         fs.mkdirSync(folderPath )
