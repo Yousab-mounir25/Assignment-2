@@ -148,7 +148,33 @@ const systemInfo = getSystemInfo();
 console.log({systemInfo});
 ////------------------------------------------------------------------------------------------------------------------
 //(18)
+const readStream = fs.createReadStream(path.resolve('big.txt') , {highWaterMark:500,encoding:'utf-8'})
+readStream.on("data" , (chunk)=>{
+    console.log({chunk});
+})
+////------------------------------------------------------------------------------------------------------------------
 
+//(19)
+const readStream2 = fs.createReadStream(path.resolve('source.txt') , {encoding:'utf-8'})
+const writeStream = fs.createWriteStream(path.resolve('dest.txt'));
+readStream2.on("data" , (chunk)=>{
+    writeStream.write(chunk)
+})
+readStream2.on('end' , ()=>{
+    writeStream.end();
+})
+////------------------------------------------------------------------------------------------------------------------
+// 20. Create a pipeline that reads a file, compresses it, and writes it to another file. (0.5 Grade)
+// •
+// Input Example: "./data.txt", "./data.txt.gz"
+//(20)
+const {createGzip} = require('node:zlib')
+const sourceFilePath = path.resolve('data.txt')
+const destZip = path.resolve('data.txt.gz')
+const zip = createGzip()
+const readStream3 =  fs.createReadStream(sourceFilePath ,{ encoding:'utf-8'})
+const writeZipStream = fs.createWriteStream(destZip)
+readStream3.pipe(zip).pipe(writeZipStream)
 
 
 
