@@ -164,9 +164,6 @@ readStream2.on('end' , ()=>{
     writeStream.end();
 })
 ////------------------------------------------------------------------------------------------------------------------
-// 20. Create a pipeline that reads a file, compresses it, and writes it to another file. (0.5 Grade)
-// •
-// Input Example: "./data.txt", "./data.txt.gz"
 //(20)
 const {createGzip} = require('node:zlib')
 const sourceFilePath = path.resolve('data.txt')
